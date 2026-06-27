@@ -1,0 +1,21 @@
+name: Validate products.json
+
+on:
+  push:
+    paths:
+      - 'data/products.json'
+      - 'tools/validate-products.js'
+  pull_request:
+    paths:
+      - 'data/products.json'
+      - 'tools/validate-products.js'
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - run: node tools/validate-products.js

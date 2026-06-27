@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
     <meta name="wechat-enable-text-zoom-em" content="true">
     <title>SN码查询</title>
-    <link rel="stylesheet" href="./weui.css" />
+    <link rel="stylesheet" href="./css/weui.css" />
 
     <style>
         #code {
@@ -22,7 +22,7 @@
     </style>
 </head>
 
-<body ontouchstart onload='createCode()' style="height: 100%;">
+<body ontouchstart onload="createCode()" style="height: 100%;">
     <div class="page" style="height: 100%;">
         <div class="weui-form">
             <div class="weui-form__bd">
@@ -55,10 +55,10 @@
                                 </button>
                                 <div class="weui-cell__ft">
                                     <input type="button" id="code" onclick="createCode()" style="width:75px"
-                                        title='点击更换验证码' />
+                                        title="点击更换验证码" />
                                 </div>
+                            </label>
                         </div>
-                        </label>
                     </div>
                 </div>
             </div>
@@ -66,22 +66,15 @@
                 <div class="weui-form__tips-area">
                     <p class="weui-form__tips">
                         特别提醒：
-                     系统查询可能存在录入延迟
-        部分行业产品和特殊系列（如深渊系列）可能不会录入该sn码查询系统
-未查询到/其他问题,可咨询西风官方工作人员或官方店铺客服
+                        系统查询可能存在录入延迟
+                        部分行业产品和特殊系列（如深渊系列）可能不会录入该sn码查询系统
+                        未查询到/其他问题,可咨询西风官方工作人员或官方店铺客服
                     </p>
                 </div>
                 <div class="weui-form__opr-area">
                     <a role="button" aria-disabled="false" class="weui-btn weui-btn_primary" href="javascript:"
                         id="showTooltips">查询</a>
                 </div>
-            </div>
-        </div>
-        <div role="alert" id="js_toast" style="display: none;">
-            <div class="weui-mask_transparent"></div>
-            <div class="weui-toast">
-                <i class="weui-icon-success-no-circle weui-icon_toast"></i>
-                <p class="weui-toast__content">已完成</p>
             </div>
         </div>
 
@@ -97,367 +90,8 @@
         </div>
     </div>
 
-    </div>
-
-    <script src="./zepto.min.js"></script>
-    <script type="text/javascript">
-        var code; //在全局定义验证码
-
-        function createCode() {
-            code = "";
-            var codeLength = 4; //验证码的长度  
-            var checkCode = document.getElementById("code");
-            var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
-                'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //随机数  
-            for (var i = 0; i < codeLength; i++) { //循环操作  
-                var index = Math.floor(Math.random() * 36); //取得随机数的索引（0~35）  
-                code += random[index]; //根据索引取得随机数加到code上  
-            }
-            checkCode.value = code; //把code值赋给验证码  
-        }
-
-        $('.weui-dialog__btn').on('click', function () {
-            $(this).parents('.js_dialog').fadeOut(200);
-            $(this).parents('.js_dialog').attr('aria-hidden', 'true');
-            $(this).parents('.js_dialog').removeAttr('tabindex');
-        })
-
-        const EXPECTED_SERIAL_LENGTH = 18; // 假设序列号的期望长度为18
-        const EXPECTED_SERIAL_LENGTH2 = 16; // 假设序列号的期望长度为18
-
-        //旧规则
-        var cardMapping = {
-            "ZF3501": "ZEPHYR RTX 3050 8G OC 樱吹雪",
-            "ZF3502": "ZEPHYR RTX 3050 8G OC 樱吹雪",
-            "ZF3503": "ZEPHYR RTX 3050 8G OC 樱吹雪",
-            "ZF3504": "ZEPHYR RTX 3050 8G OC 樱吹雪",
-            "ZF3505": "ZEPHYR RTX 3050 8G OC 樱吹雪",
-            "ZF3601": "ZEPHYR RTX 3060 12G OC 樱吹雪",
-            "ZF3602": "ZEPHYR RTX 3060 12G OC 樱吹雪",
-            "ZF3603": "ZEPHYR RTX 3060 12G OC 樱吹雪",
-            "ZF3604": "ZEPHYR RTX 3060 12G OC 樱吹雪",
-            "ZF3605": "ZEPHYR RTX 3060 12G OC 樱吹雪",
-            "ZF3607": "ZEPHYR RTX 3060 TI8G OC 樱吹雪",
-            "ZF3608": "ZEPHYR RTX 3060 TI8G OC 樱吹雪",
-            "ZF3609": "ZEPHYR RTX 3060 TI8G OC 樱吹雪",
-            "ZF3610": "ZEPHYR RTX 3060 TIG6X 8G 浪花",
-            "ZF3611": "ZEPHYR RTX 3060 TIG6X 8G 浪花",
-            "ZF3612": "ZEPHYR RTX 3060 12G OC 浪花",
-            "ZF3614": "ZEPHYR RTX 3060 TI G6X 8G 浪花",
-            "ZF3615": "ZEPHYR RTX 3060 TI G6X 8G 浪花",
-            "ZF3616": "ZEPHYR RTX 3060 TI 8G 浪花",
-            "ZF3617": "ZEPHYR RTX 3060 12G 浪花",
-            "ZF3701": "ZEPHYR RTX 3070 TI8G 浪花",
-            "ZF3702": "ZEPHYR RTX 3070 Ti V2 浪花",
-            "ZF3801": "ZEPHYR RTX 3080 10G 浪花",
-            "ZF3802": "ZEPHYR RTX 3080 10G 浪花",
-            "ZF3803": "ZEPHYR RTX 3080 LHR 10G 浪花",
-            "ZF3804": "ZEPHYR RTX 3080 12G 浪花",
-            "ZF3805": "ZEPHYR RTX 3080 Ti 浪花",
-            "ZF3806": "ZEPHYR RTX 3080 12G 浪花 V2",
-            "ZF3808": "ZEPHYR RTX 3080 Ti 12G 浪花",
-            "ZF3807": "ZEPHYR RTX 3080 LHR 10G 浪花 V2",
-            "ZF0022": "ZEPHYR RTX 3060 TIG6X 8G 浪花",
-            "ZF0008": "ZEPHYR RTX 3070 TI8G 浪花",
-            "ZF3703": "ZEPHYR RTX 3070 Ti V2 浪花",
-            "ZF4700": "ZEPHYR RTX 4070 Ti 11G 风神",
-            "ZF4701": "ZEPHYR RTX 4070 12G 风神",
-            "ZF4702": "ZEPHYR RTX 4070 Ti 12G 风神",
-            "ZF4703": "ZEPHYR RTX 4070 Ti Super 16G 风神",
-            "ZF4704": "ZEPHYR RTX 4070 12G 风神",
-            "ZF4601": "ZEPHYR RTX 4060 Ti 8G 樱吹雪",
-            "ZF0020": "ZEPHYR RTX 3060 TI8G OC 樱吹雪",
-            "ZF3606": "ZEPHYR RTX 3060 TI 7G OC 樱吹雪 Pro",
-            "LH361224": "ZEPHYR RTX 3060 12G OC 浪花",
-            "LH360224": "ZEPHYR RTX 3060 12G OC 樱吹雪",
-            "LH360223": "ZEPHYR RTX 3060 12G OC 樱吹雪",
-            "ZF4801": "ZEPHYR & Valkyrie RTX 4080 16G 水冷",
-            "ZF4802": "ZEPHYR & Valkyrie RTX 4080 SUPER 16G 水冷",
-            "ZF3705": "ZEPHYR RTX 3070 8G LHR 浪花",
-            "ZA6501": "ZEPHYR RX 6650XT 8G 风神 龙年限定",
-            "FA6501": "ZEPHYR RX 6650XT 8G 风神 龙年限定",
-            "FA66": "ZEPHYR RX 6650XT 8G 风神 龙年限定",
-            "ZA66": "ZEPHYR RX 6650XT 8G 风神 龙年限定",
-            "ZF4705": "ZEPHYR RTX 4070 SUPER 12G 深渊",
-            "ZF4602": "ZEPHYR RTX 4060 8G 樱吹雪&机械大师联名",
-            "ZF0K19": " ZEPHYR RTX3080   10G 浪花"
-        };
-
-        //新规则
-        var newcardMapping = {
-            // 2025-02-06新增
-            "Z3501S": "ZEPHYR RTX 3050 8G 樱吹雪",
-            "Z3502V": "ZEPHYR RTX 3050 8G 风神 Mini",
-            "Z3601V": "ZEPHYR RTX 3060 12G 风神 Mini",
-            "Z3602S": "ZEPHYR RTX 3060 12G 樱吹雪",
-            "Z3604A": "ZEPHYR RTX 3060 12G 浪花",
-            "Z3605A": "ZEPHYR RTX 3060 Ti 8G 浪花",
-            "Z3609A": "ZEPHYR RTX 3060 TI G6X 8G 浪花 V2",
-            "Z3606S": "ZEPHYR RTX 3060 Ti 8G 樱吹雪",
-            "Z3610S": "ZEPHYR RTX 3060 Ti 8G 樱吹雪 Pro",
-            "Z3612A": "ZEPHYR RTX 3060 12G 浪花",
-            "Z3613A": "ZEPHYR RTX 3060 Ti 8G 浪花",
-            "Z3701A": "ZEPHYR RTX 3070 LHR 8G 浪花",
-            "Z3702A": "ZEPHYR RTX 3070 TI 8G 浪花",
-            "Z3704A": "ZEPHYR RTX 3070 Ti V2 8G 浪花",
-            "Z3805A": "ZEPHYR RTX 3080 10G 浪花 V2",
-            "Z3806A": "ZEPHYR RTX 3080 LHR 10G 浪花 V2",
-            "Z3807A": "ZEPHYR RTX 3080 12G 浪花 V2",
-            "Z3808A": "ZEPHYR RTX 3080 Ti 12G 浪花 V2",
-            "Z4602S": "ZEPHYR RTX 4060 Ti 8G 樱吹雪",
-            "Z4603S": "ZEPHYR RTX 4060 Ti 16G 樱吹雪",
-            "Z4605S": "ZEPHYR & M-master RTX 4060 8G 樱吹雪",
-            "Z4701V": "ZEPHYR RTX 4070 12G 风神",
-            "Z4702S": "ZEPHYR RTX 4070 12G 樱吹雪",
-            "Z4703V": "ZEPHYR RTX 4070 Ti 12G 风神",
-            "Z4705V": "ZEPHYR RTX 4070 Ti 12G 风神",
-            "Z4706V": "ZEPHYR RTX 4070 Ti S 16G 风神",
-            "Z4707K": "ZEPHYR & Valkyrie RTX 4070 Ti S 16G",
-            "Z4801K": "ZEPHYR & Valkyrie RTX 4080 16G",
-            "Z4802K": "ZEPHYR & Valkyrie RTX 4080 Super 16G",
-            "ZV6601": "ZEPHYR RX 6650 XT 8G 风神 Mini",
-            "Z3603A": "ZEPHYR RTX 3060 12G 浪花",
-            "Z3607A": "ZEPHYR RTX 3060 TI G6X 8G 浪花",
-            "Z3608A": "ZEPHYR RTX 3060 TI G6X 8G 浪花",
-            "Z3703A": "ZEPHYR RTX 3070 TI 8G 浪花 V2",
-            "Z3801A": "ZEPHYR RTX 3080 10G 浪花",
-            "Z3802A": "ZEPHYR RTX 3080 LHR 10G 浪花",
-            "Z3803A": "ZEPHYR RTX 3080 12G 浪花",
-            "Z3804A": "ZEPHYR RTX 3080 Ti 12G 浪花",
-            "Z4601S": "ZEPHYR & M-master RTX 4060 8G 樱吹雪",
-            "ZV6602": "ZEPHYR RX 6600 8G 风神 Mini",
-            "ZV6603": "ZEPHYR RX 6600 XT 8G 风神 Mini",
-            "ZV6604": "ZEPHYR RX 6650 XT 8G 风神 Mini",
-            "ZV6801": "ZEPHYR RX 6800 16G",
-            "ZV6802": "ZEPHYR RX 6800 XT 16G",
-            "ZV6901": "ZEPHYR RX 6900 XT 16G",
-            "Z4801K": "ZEPHYR & Valkyrie RTX 4080 16G 水冷",
-            "Z4802K": "ZEPHYR & Valkyrie RTX 4080 SUPER 16G 水冷",
-            "Z4709P": "ZEPHYR RTX 4070 Super 深渊",
-            "Z4709S": "ZEPHYR RTX 4070 12G 樱吹雪 Black",
-            "Z3615V": "ZEPHYR RTX 3060 Ti G6X 8G 风神 MX",
-            "Z3705V": "ZEPHYR RTX 3070 Ti 8G 风神 MX",
-            "Z4711V": "ZEPHYR RTX 4070 Super 12G 风神 MX",
-            "Z3504S": "ZEPHYR RTX 3050 8G 樱吹雪",
-            "Z3505S": "ZEPHYR RTX 3050 8G 樱吹雪",
-            "Z3706V": "ZEPHYR RTX 3070 LHR 8G 风神 MX",
-            "ZV6605": "ZEPHYR RX 6600E 8G 风神 Mini",
-            "Z3707V": "ZEPHYR RTX 3070 8G 风神 MX",
-            "ZV6606": "ZEPHYR RX 6650 XT 8G",
-            "ZV7901": "ZEPHYR RX 7900 XT 20G",
-            "ZV7902": "ZEPHYR RX 7900 XTX 24G",
-            "Z3508L": "ZEPHYR RTX 3050 6G LP",
-            "Z3708B": "ZEPHYR RTX 3070 Ti V2 8G",
-            "Z3809B": "ZEPHYR RTX 3080 Ti 12G",
-            "Z4708K": "ZEPHYR & Valkyrie RTX 4070 Super 12G",
-            "Z4709K": "ZEPHYR & Valkyrie RTX 4070 Ti 12G",
-            "Z4712V": "ZEPHYR RTX 4070 Super 12G 风神",
-            "Z3511T": "ZEPHYR RTX 3050 6G DUAL-ITX 轻风版",
-            "Z4607A": "ZEPHYR RTX 4060 Ti 8G D6",
-            "Z4713X": "ZEPHYR RTX 4070 12G 樱吹雪 X",
-            "ZV6501": "ZEPHYR RX 6500 XT 4G DUAL-ITX",
-            "ZV6607": "ZEPHYR RX 6650 XT 8G 风神 MT",
-            "Z3503V": "ZEPHYR RTX 3050 8G 风神 Mini",
-            "Z4606V": "ZEPHYR RTX 4060 8G 风神 Mini",
-            "Z4714V": "ZEPHYR RTX 4070 12G 风神 MX",
-            "Z4715V": "ZEPHYR RTX 4070 Super 12G OC 风神 MX",
-            "Z4716V": "ZEPHYR RTX 4070 Ti 12G 风神 MX",
-            "ZV6502": "ZEPHYR RX 6500 4G DUAL-ITX",
-            "ZP6501": "ZEPHYR RX 6500 4G LP",
-            "Z5701G": "ZEPHYR RTX5070 12G 深渊",
-            "Z3621V": "ZEPHYR RTX 3060 Ti G6X 8G 风神 MX",
-            "Z3709V": "ZEPHYR RTX 3070 Ti  8G 风神 MX",
-            "Z4609V": "ZEPHYR RTX 4060 8G 风神 Mini",
-            "Z4603S": "ZEPHYR RTX 4060 Ti 16G 樱吹雪",
-            "Z4724V": "ZEPHYR RTX 4070 12G D6 风神 MX",
-            "Z4709S": "ZEPHYR RTX 4070 12G 樱吹雪 BLACK",
-            "ZV7601": "ZEPHYR RX 7600 XT 16G 风神 MT",
-
-            "Z4726V": "ZEPHYR & SAMA RTX 4070 Super 12G",
-            "Z5601G": "ZEPHYR RTX 5060 Ti 16G 深渊",
-            "Z5701G": "ZEPHYR RTX 5070 12G 深渊",
-            "Z5602X": "ZEPHYR RTX 5060 Ti 16G 樱吹雪 X",
-            "Z5702A": "ZEPHYR RTX 5070 12G OC 浪花",
-
-            "Z3622S": "ZEPHYR RTX 3060 Ti 8G 樱吹雪",
-            "Z3810A": "ZEPHYR RTX 3080 LHR 10G OC 浪花",
-            "Z4727A": "ZEPHYR RTX 4070 Ti Super 16G OC 浪花",
-            "Z5703P": "ZEPHYR RTX 5070 Ti 16G 深渊 Pro Max",
-            "Z5704P": "ZEPHYR RTX 5070 Ti 16G 深渊",
-            "Z5803G": "ZEPHYR RTX 5080 16G 深渊 pro Max",
-            "Z5605V": "ZEPHYR RTX 5060Ti 16G 次元联动·先马限定版",
-            "ZV6701": "ZEPHYR RX 6750 GRE 10G",
-            "ZV7605": "ZEPHYR RX 7600 8G 风神 MT",
-        };
-
-        function clearText() {
-            $('#sn').val('')
-        }
-
-        $("#showTooltips").on('click', function () {
-            var sn = $('#sn').val().trim();
-            var inputCode = $('#js_input2').val().trim();
-            var $iosDialog2 = $('#iosDialog2')
-            
-            if (sn.length <= 0) {
-                $('#reminder_text').text('请输入序列号！')
-                $iosDialog2.fadeIn(200);
-                $iosDialog2.attr('aria-hidden', 'false');
-                $iosDialog2.attr('tabindex', '0');
-                $iosDialog2.trigger('focus');
-            } else if (inputCode.length <= 0) { //若输入的验证码长度为0  
-                $('#reminder_text').text('请输入验证码！')
-                $iosDialog2.fadeIn(200);
-                $iosDialog2.attr('aria-hidden', 'false');
-                $iosDialog2.attr('tabindex', '0');
-                $iosDialog2.trigger('focus');
-            } else if (inputCode.toLowerCase() != code.toLowerCase()) { //若输入的验证码与产生的验证码不一致时  
-                $('#reminder_text').text('验证码输入错误！@_@')
-                $iosDialog2.fadeIn(200);
-                $iosDialog2.attr('aria-hidden', 'false');
-                $iosDialog2.attr('tabindex', '0');
-                $iosDialog2.trigger('focus');
-                createCode(); //刷新验证码  
-            } else { //输入正确时  
-                var serialNumber = sn
-
-                            if(sn === 'LH3602231120000019'){
-                                // 显示新的提示信息（料号和生产年份、周数）
-                        $('#reminder_text').html(`
-                        <p id="pmodel">产品型号：浪花RTX3060 12G</p>
-                        <p id="pouttime">出厂日期：2024年第42周</p>
-                    `);
-                                                        $('#js_input2').val('');
-                        createCode();
-                        $iosDialog2.fadeIn(200);
-                            }
-                else{
-
-                // 动态匹配料号
-                var matchedMaterialNumber = null;
-                for (var material in cardMapping) {
-                    if (serialNumber.startsWith(material)) {
-                        matchedMaterialNumber = material;
-                        break;
-                    }
-                }
-
-                var newmatchedMaterialNumber = null;
-                for (var material in newcardMapping) {
-                    if (serialNumber.startsWith(material)) {
-                        newmatchedMaterialNumber = material;
-                        break;
-                    }
-                }
-
-                if (matchedMaterialNumber) {
-                    // 获取料号后面的部分
-                    var remainingPart = serialNumber.substring(matchedMaterialNumber.length);
-
-                    // 检查后续部分是否是6位日期格式
-                    var regExpDate = /^[0-9]{6}$/;
-                    // 按照原有规则解析日期
-                    var year = remainingPart.substring(0, 2);
-                    var month = remainingPart.substring(2, 4);
-                    var day = remainingPart.substring(4, 6);
-                    var parsedDate = new Date("20" + year, month - 1, day);
-
-                    if (remainingPart.length >= 6 && regExpDate.test(remainingPart.substring(0, 6)) && check("20" + year + '-' + month + '-' + day)) {
-
-                        // 显示原有的提示信息（产品型号和出厂日期）
-                        $('#reminder_text').html(`
-                        <p id="pmodel">产品型号：${cardMapping[matchedMaterialNumber]}</p>
-                        <p id="pouttime">出厂日期：20${year}-${month}-${day}</p>
-                    `);
-                    } else if (remainingPart.length >= 8) {
-                        // 获取中间无意义的4位数字以及后4位（年份和周别）
-                        var meaninglessPart = remainingPart.substring(0, 4);
-                        var yearAndWeek = remainingPart.substring(4, 8);
-                        var year = yearAndWeek.substring(0, 2);
-                        var week = yearAndWeek.substring(2, 4);
-
-                        // 检查周数是否在1到52之间
-                        if (parseInt(week) < 1 || parseInt(week) > 52) {
-                            $('#reminder_text').text('请输入正确的序列号格式！');
-                            $iosDialog2.fadeIn(200);
-                            return;
-                        }
-
-                        // 显示新的提示信息（料号和生产年份、周数）
-                        $('#reminder_text').html(`
-                        <p id="pmodel">产品型号：${cardMapping[matchedMaterialNumber]}</p>
-                        <p id="pouttime">出厂日期：20${year}年第${week}周</p>
-                    `);
-                    } else {
-                        $('#reminder_text').text('请输入正确的序列号格式！');
-                        $iosDialog2.fadeIn(200);
-                    }
-
-                    $('#js_input2').val('');
-                    createCode();
-                    $iosDialog2.fadeIn(200);
-                }else if(newmatchedMaterialNumber){
-                    // 获取料号后面的部分
-                    var remainingPart = serialNumber.substring(newmatchedMaterialNumber.length);
-
-                        // 获取中间无意义的4位数字以及后4位（年份和周别）
-                        var meaninglessPart = remainingPart.substring(0, 4);
-                        var yearAndWeek = remainingPart.substring(4, 8);
-                        var year = yearAndWeek.substring(0, 2);
-                        var week = yearAndWeek.substring(2, 4);
-
-                        // 检查周数是否在1到52之间
-                        if (parseInt(week) < 1 || parseInt(week) > 52) {
-                            $('#reminder_text').text('请输入正确的序列号格式！');
-                            $iosDialog2.fadeIn(200);
-                            return;
-                        }
-
-                        // 显示新的提示信息（料号和生产年份、周数）
-                        $('#reminder_text').html(`
-                        <p id="pmodel">产品型号：${newcardMapping[newmatchedMaterialNumber]}</p>
-                        <p id="pouttime">出厂日期：20${year}年第${week}周</p>
-                    `);
-
-                    $('#js_input2').val('');
-                    createCode();
-                    $iosDialog2.fadeIn(200);
-                }else {
-                    $('#reminder_text').text('请输入正确的序列号！');
-                    $iosDialog2.fadeIn(200);
-                }
-                }
-            }
-        });
-
-
-        const isDateValid = (...val) => !Number.isNaN(new Date(...val).valueOf());
-
-        function check(date) {
-            return (new Date(date).getDate() == date.substring(date.length - 2))
-        }
-
-        function isDateGreaterThanMay1st2023(dateString) {
-            // 使用正则表达式检查日期格式是否正确
-            if (!/^\d{4}-\d{2}-\d{2}$/.test(dateString)) return false;
-
-            // 将日期字符串解析为日期对象
-            const date = new Date(dateString);
-
-            // 检查日期对象是否有效
-            if (isNaN(date.getTime())) return false;
-
-            // 创建2023年5月1日的日期对象
-            const may1st2023 = new Date("2023-05-01");
-
-            // 比较给定日期与2023年5月1日的日期
-            return date >= may1st2023;
-        }
-    </script>
+    <script src="./js/zepto.min.js"></script>
+    <script src="./js/sn-lookup.js"></script>
 </body>
 
 </html>
-
-
-
-

@@ -1,0 +1,638 @@
+{
+  "_meta": {
+    "说明": "本文件维护所有 SN 料号。提交到 main 分支后，GitHub Pages 约 1～2 分钟更新到 sn.zephyrsz.com",
+    "详细文档": "docs/如何添加SN码.md",
+    "数组说明": {
+      "oldRules": "旧款 SN 料号（ZF、LH 等开头），字段：prefix + model",
+      "newRules": "新款 SN 料号（Z 开头，2025 年后），字段：prefix + model",
+      "exceptions": "特例 SN（整条固定匹配），字段：sn + model + dateText"
+    },
+    "新增newRules示例": {
+      "prefix": "Z5801G",
+      "model": "ZEPHYR RTX 5080 16G 深渊"
+    },
+    "新增oldRules示例": {
+      "prefix": "ZF5801",
+      "model": "ZEPHYR RTX 5080 16G 浪花"
+    },
+    "新增exceptions示例": {
+      "sn": "完整序列号",
+      "model": "产品型号",
+      "dateText": "2024年第42周"
+    },
+    "注意事项": [
+      "JSON 标准不支持 // 注释，说明写在 _meta 中",
+      "新增时在对应数组末尾追加，上一项末尾加英文逗号",
+      "数组最后一项后面不要加逗号",
+      "prefix 和 sn 区分大小写，不要有空格",
+      "不要删除 _meta 本段"
+    ]
+  },
+  "oldRules": [
+    {
+      "prefix": "ZF3501",
+      "model": "ZEPHYR RTX 3050 8G OC 樱吹雪"
+    },
+    {
+      "prefix": "ZF3502",
+      "model": "ZEPHYR RTX 3050 8G OC 樱吹雪"
+    },
+    {
+      "prefix": "ZF3503",
+      "model": "ZEPHYR RTX 3050 8G OC 樱吹雪"
+    },
+    {
+      "prefix": "ZF3504",
+      "model": "ZEPHYR RTX 3050 8G OC 樱吹雪"
+    },
+    {
+      "prefix": "ZF3505",
+      "model": "ZEPHYR RTX 3050 8G OC 樱吹雪"
+    },
+    {
+      "prefix": "ZF3601",
+      "model": "ZEPHYR RTX 3060 12G OC 樱吹雪"
+    },
+    {
+      "prefix": "ZF3602",
+      "model": "ZEPHYR RTX 3060 12G OC 樱吹雪"
+    },
+    {
+      "prefix": "ZF3603",
+      "model": "ZEPHYR RTX 3060 12G OC 樱吹雪"
+    },
+    {
+      "prefix": "ZF3604",
+      "model": "ZEPHYR RTX 3060 12G OC 樱吹雪"
+    },
+    {
+      "prefix": "ZF3605",
+      "model": "ZEPHYR RTX 3060 12G OC 樱吹雪"
+    },
+    {
+      "prefix": "ZF3607",
+      "model": "ZEPHYR RTX 3060 TI8G OC 樱吹雪"
+    },
+    {
+      "prefix": "ZF3608",
+      "model": "ZEPHYR RTX 3060 TI8G OC 樱吹雪"
+    },
+    {
+      "prefix": "ZF3609",
+      "model": "ZEPHYR RTX 3060 TI8G OC 樱吹雪"
+    },
+    {
+      "prefix": "ZF3610",
+      "model": "ZEPHYR RTX 3060 TIG6X 8G 浪花"
+    },
+    {
+      "prefix": "ZF3611",
+      "model": "ZEPHYR RTX 3060 TIG6X 8G 浪花"
+    },
+    {
+      "prefix": "ZF3612",
+      "model": "ZEPHYR RTX 3060 12G OC 浪花"
+    },
+    {
+      "prefix": "ZF3614",
+      "model": "ZEPHYR RTX 3060 TI G6X 8G 浪花"
+    },
+    {
+      "prefix": "ZF3615",
+      "model": "ZEPHYR RTX 3060 TI G6X 8G 浪花"
+    },
+    {
+      "prefix": "ZF3616",
+      "model": "ZEPHYR RTX 3060 TI 8G 浪花"
+    },
+    {
+      "prefix": "ZF3617",
+      "model": "ZEPHYR RTX 3060 12G 浪花"
+    },
+    {
+      "prefix": "ZF3701",
+      "model": "ZEPHYR RTX 3070 TI8G 浪花"
+    },
+    {
+      "prefix": "ZF3702",
+      "model": "ZEPHYR RTX 3070 Ti V2 浪花"
+    },
+    {
+      "prefix": "ZF3801",
+      "model": "ZEPHYR RTX 3080 10G 浪花"
+    },
+    {
+      "prefix": "ZF3802",
+      "model": "ZEPHYR RTX 3080 10G 浪花"
+    },
+    {
+      "prefix": "ZF3803",
+      "model": "ZEPHYR RTX 3080 LHR 10G 浪花"
+    },
+    {
+      "prefix": "ZF3804",
+      "model": "ZEPHYR RTX 3080 12G 浪花"
+    },
+    {
+      "prefix": "ZF3805",
+      "model": "ZEPHYR RTX 3080 Ti 浪花"
+    },
+    {
+      "prefix": "ZF3806",
+      "model": "ZEPHYR RTX 3080 12G 浪花 V2"
+    },
+    {
+      "prefix": "ZF3808",
+      "model": "ZEPHYR RTX 3080 Ti 12G 浪花"
+    },
+    {
+      "prefix": "ZF3807",
+      "model": "ZEPHYR RTX 3080 LHR 10G 浪花 V2"
+    },
+    {
+      "prefix": "ZF0022",
+      "model": "ZEPHYR RTX 3060 TIG6X 8G 浪花"
+    },
+    {
+      "prefix": "ZF0008",
+      "model": "ZEPHYR RTX 3070 TI8G 浪花"
+    },
+    {
+      "prefix": "ZF3703",
+      "model": "ZEPHYR RTX 3070 Ti V2 浪花"
+    },
+    {
+      "prefix": "ZF4700",
+      "model": "ZEPHYR RTX 4070 Ti 11G 风神"
+    },
+    {
+      "prefix": "ZF4701",
+      "model": "ZEPHYR RTX 4070 12G 风神"
+    },
+    {
+      "prefix": "ZF4702",
+      "model": "ZEPHYR RTX 4070 Ti 12G 风神"
+    },
+    {
+      "prefix": "ZF4703",
+      "model": "ZEPHYR RTX 4070 Ti Super 16G 风神"
+    },
+    {
+      "prefix": "ZF4704",
+      "model": "ZEPHYR RTX 4070 12G 风神"
+    },
+    {
+      "prefix": "ZF4601",
+      "model": "ZEPHYR RTX 4060 Ti 8G 樱吹雪"
+    },
+    {
+      "prefix": "ZF0020",
+      "model": "ZEPHYR RTX 3060 TI8G OC 樱吹雪"
+    },
+    {
+      "prefix": "ZF3606",
+      "model": "ZEPHYR RTX 3060 TI 7G OC 樱吹雪 Pro"
+    },
+    {
+      "prefix": "LH361224",
+      "model": "ZEPHYR RTX 3060 12G OC 浪花"
+    },
+    {
+      "prefix": "LH360224",
+      "model": "ZEPHYR RTX 3060 12G OC 樱吹雪"
+    },
+    {
+      "prefix": "LH360223",
+      "model": "ZEPHYR RTX 3060 12G OC 樱吹雪"
+    },
+    {
+      "prefix": "ZF4801",
+      "model": "ZEPHYR & Valkyrie RTX 4080 16G 水冷"
+    },
+    {
+      "prefix": "ZF4802",
+      "model": "ZEPHYR & Valkyrie RTX 4080 SUPER 16G 水冷"
+    },
+    {
+      "prefix": "ZF3705",
+      "model": "ZEPHYR RTX 3070 8G LHR 浪花"
+    },
+    {
+      "prefix": "ZA6501",
+      "model": "ZEPHYR RX 6650XT 8G 风神 龙年限定"
+    },
+    {
+      "prefix": "FA6501",
+      "model": "ZEPHYR RX 6650XT 8G 风神 龙年限定"
+    },
+    {
+      "prefix": "FA66",
+      "model": "ZEPHYR RX 6650XT 8G 风神 龙年限定"
+    },
+    {
+      "prefix": "ZA66",
+      "model": "ZEPHYR RX 6650XT 8G 风神 龙年限定"
+    },
+    {
+      "prefix": "ZF4705",
+      "model": "ZEPHYR RTX 4070 SUPER 12G 深渊"
+    },
+    {
+      "prefix": "ZF4602",
+      "model": "ZEPHYR RTX 4060 8G 樱吹雪&机械大师联名"
+    },
+    {
+      "prefix": "ZF0K19",
+      "model": " ZEPHYR RTX3080   10G 浪花"
+    }
+  ],
+  "newRules": [
+    {
+      "prefix": "Z3501S",
+      "model": "ZEPHYR RTX 3050 8G 樱吹雪"
+    },
+    {
+      "prefix": "Z3502V",
+      "model": "ZEPHYR RTX 3050 8G 风神 Mini"
+    },
+    {
+      "prefix": "Z3601V",
+      "model": "ZEPHYR RTX 3060 12G 风神 Mini"
+    },
+    {
+      "prefix": "Z3602S",
+      "model": "ZEPHYR RTX 3060 12G 樱吹雪"
+    },
+    {
+      "prefix": "Z3604A",
+      "model": "ZEPHYR RTX 3060 12G 浪花"
+    },
+    {
+      "prefix": "Z3605A",
+      "model": "ZEPHYR RTX 3060 Ti 8G 浪花"
+    },
+    {
+      "prefix": "Z3609A",
+      "model": "ZEPHYR RTX 3060 TI G6X 8G 浪花 V2"
+    },
+    {
+      "prefix": "Z3606S",
+      "model": "ZEPHYR RTX 3060 Ti 8G 樱吹雪"
+    },
+    {
+      "prefix": "Z3610S",
+      "model": "ZEPHYR RTX 3060 Ti 8G 樱吹雪 Pro"
+    },
+    {
+      "prefix": "Z3612A",
+      "model": "ZEPHYR RTX 3060 12G 浪花"
+    },
+    {
+      "prefix": "Z3613A",
+      "model": "ZEPHYR RTX 3060 Ti 8G 浪花"
+    },
+    {
+      "prefix": "Z3701A",
+      "model": "ZEPHYR RTX 3070 LHR 8G 浪花"
+    },
+    {
+      "prefix": "Z3702A",
+      "model": "ZEPHYR RTX 3070 TI 8G 浪花"
+    },
+    {
+      "prefix": "Z3704A",
+      "model": "ZEPHYR RTX 3070 Ti V2 8G 浪花"
+    },
+    {
+      "prefix": "Z3805A",
+      "model": "ZEPHYR RTX 3080 10G 浪花 V2"
+    },
+    {
+      "prefix": "Z3806A",
+      "model": "ZEPHYR RTX 3080 LHR 10G 浪花 V2"
+    },
+    {
+      "prefix": "Z3807A",
+      "model": "ZEPHYR RTX 3080 12G 浪花 V2"
+    },
+    {
+      "prefix": "Z3808A",
+      "model": "ZEPHYR RTX 3080 Ti 12G 浪花 V2"
+    },
+    {
+      "prefix": "Z4602S",
+      "model": "ZEPHYR RTX 4060 Ti 8G 樱吹雪"
+    },
+    {
+      "prefix": "Z4603S",
+      "model": "ZEPHYR RTX 4060 Ti 16G 樱吹雪"
+    },
+    {
+      "prefix": "Z4605S",
+      "model": "ZEPHYR & M-master RTX 4060 8G 樱吹雪"
+    },
+    {
+      "prefix": "Z4701V",
+      "model": "ZEPHYR RTX 4070 12G 风神"
+    },
+    {
+      "prefix": "Z4702S",
+      "model": "ZEPHYR RTX 4070 12G 樱吹雪"
+    },
+    {
+      "prefix": "Z4703V",
+      "model": "ZEPHYR RTX 4070 Ti 12G 风神"
+    },
+    {
+      "prefix": "Z4705V",
+      "model": "ZEPHYR RTX 4070 Ti 12G 风神"
+    },
+    {
+      "prefix": "Z4706V",
+      "model": "ZEPHYR RTX 4070 Ti S 16G 风神"
+    },
+    {
+      "prefix": "Z4707K",
+      "model": "ZEPHYR & Valkyrie RTX 4070 Ti S 16G"
+    },
+    {
+      "prefix": "Z4801K",
+      "model": "ZEPHYR & Valkyrie RTX 4080 16G 水冷"
+    },
+    {
+      "prefix": "Z4802K",
+      "model": "ZEPHYR & Valkyrie RTX 4080 SUPER 16G 水冷"
+    },
+    {
+      "prefix": "ZV6601",
+      "model": "ZEPHYR RX 6650 XT 8G 风神 Mini"
+    },
+    {
+      "prefix": "Z3603A",
+      "model": "ZEPHYR RTX 3060 12G 浪花"
+    },
+    {
+      "prefix": "Z3607A",
+      "model": "ZEPHYR RTX 3060 TI G6X 8G 浪花"
+    },
+    {
+      "prefix": "Z3608A",
+      "model": "ZEPHYR RTX 3060 TI G6X 8G 浪花"
+    },
+    {
+      "prefix": "Z3703A",
+      "model": "ZEPHYR RTX 3070 TI 8G 浪花 V2"
+    },
+    {
+      "prefix": "Z3801A",
+      "model": "ZEPHYR RTX 3080 10G 浪花"
+    },
+    {
+      "prefix": "Z3802A",
+      "model": "ZEPHYR RTX 3080 LHR 10G 浪花"
+    },
+    {
+      "prefix": "Z3803A",
+      "model": "ZEPHYR RTX 3080 12G 浪花"
+    },
+    {
+      "prefix": "Z3804A",
+      "model": "ZEPHYR RTX 3080 Ti 12G 浪花"
+    },
+    {
+      "prefix": "Z4601S",
+      "model": "ZEPHYR & M-master RTX 4060 8G 樱吹雪"
+    },
+    {
+      "prefix": "ZV6602",
+      "model": "ZEPHYR RX 6600 8G 风神 Mini"
+    },
+    {
+      "prefix": "ZV6603",
+      "model": "ZEPHYR RX 6600 XT 8G 风神 Mini"
+    },
+    {
+      "prefix": "ZV6604",
+      "model": "ZEPHYR RX 6650 XT 8G 风神 Mini"
+    },
+    {
+      "prefix": "ZV6801",
+      "model": "ZEPHYR RX 6800 16G"
+    },
+    {
+      "prefix": "ZV6802",
+      "model": "ZEPHYR RX 6800 XT 16G"
+    },
+    {
+      "prefix": "ZV6901",
+      "model": "ZEPHYR RX 6900 XT 16G"
+    },
+    {
+      "prefix": "Z4709P",
+      "model": "ZEPHYR RTX 4070 Super 深渊"
+    },
+    {
+      "prefix": "Z4709S",
+      "model": "ZEPHYR RTX 4070 12G 樱吹雪 BLACK"
+    },
+    {
+      "prefix": "Z3615V",
+      "model": "ZEPHYR RTX 3060 Ti G6X 8G 风神 MX"
+    },
+    {
+      "prefix": "Z3705V",
+      "model": "ZEPHYR RTX 3070 Ti 8G 风神 MX"
+    },
+    {
+      "prefix": "Z4711V",
+      "model": "ZEPHYR RTX 4070 Super 12G 风神 MX"
+    },
+    {
+      "prefix": "Z3504S",
+      "model": "ZEPHYR RTX 3050 8G 樱吹雪"
+    },
+    {
+      "prefix": "Z3505S",
+      "model": "ZEPHYR RTX 3050 8G 樱吹雪"
+    },
+    {
+      "prefix": "Z3706V",
+      "model": "ZEPHYR RTX 3070 LHR 8G 风神 MX"
+    },
+    {
+      "prefix": "ZV6605",
+      "model": "ZEPHYR RX 6600E 8G 风神 Mini"
+    },
+    {
+      "prefix": "Z3707V",
+      "model": "ZEPHYR RTX 3070 8G 风神 MX"
+    },
+    {
+      "prefix": "ZV6606",
+      "model": "ZEPHYR RX 6650 XT 8G"
+    },
+    {
+      "prefix": "ZV7901",
+      "model": "ZEPHYR RX 7900 XT 20G"
+    },
+    {
+      "prefix": "ZV7902",
+      "model": "ZEPHYR RX 7900 XTX 24G"
+    },
+    {
+      "prefix": "Z3508L",
+      "model": "ZEPHYR RTX 3050 6G LP"
+    },
+    {
+      "prefix": "Z3708B",
+      "model": "ZEPHYR RTX 3070 Ti V2 8G"
+    },
+    {
+      "prefix": "Z3809B",
+      "model": "ZEPHYR RTX 3080 Ti 12G"
+    },
+    {
+      "prefix": "Z4708K",
+      "model": "ZEPHYR & Valkyrie RTX 4070 Super 12G"
+    },
+    {
+      "prefix": "Z4709K",
+      "model": "ZEPHYR & Valkyrie RTX 4070 Ti 12G"
+    },
+    {
+      "prefix": "Z4712V",
+      "model": "ZEPHYR RTX 4070 Super 12G 风神"
+    },
+    {
+      "prefix": "Z3511T",
+      "model": "ZEPHYR RTX 3050 6G DUAL-ITX 轻风版"
+    },
+    {
+      "prefix": "Z4607A",
+      "model": "ZEPHYR RTX 4060 Ti 8G D6"
+    },
+    {
+      "prefix": "Z4713X",
+      "model": "ZEPHYR RTX 4070 12G 樱吹雪 X"
+    },
+    {
+      "prefix": "ZV6501",
+      "model": "ZEPHYR RX 6500 XT 4G DUAL-ITX"
+    },
+    {
+      "prefix": "ZV6607",
+      "model": "ZEPHYR RX 6650 XT 8G 风神 MT"
+    },
+    {
+      "prefix": "Z3503V",
+      "model": "ZEPHYR RTX 3050 8G 风神 Mini"
+    },
+    {
+      "prefix": "Z4606V",
+      "model": "ZEPHYR RTX 4060 8G 风神 Mini"
+    },
+    {
+      "prefix": "Z4714V",
+      "model": "ZEPHYR RTX 4070 12G 风神 MX"
+    },
+    {
+      "prefix": "Z4715V",
+      "model": "ZEPHYR RTX 4070 Super 12G OC 风神 MX"
+    },
+    {
+      "prefix": "Z4716V",
+      "model": "ZEPHYR RTX 4070 Ti 12G 风神 MX"
+    },
+    {
+      "prefix": "ZV6502",
+      "model": "ZEPHYR RX 6500 4G DUAL-ITX"
+    },
+    {
+      "prefix": "ZP6501",
+      "model": "ZEPHYR RX 6500 4G LP"
+    },
+    {
+      "prefix": "Z5701G",
+      "model": "ZEPHYR RTX 5070 12G 深渊"
+    },
+    {
+      "prefix": "Z3621V",
+      "model": "ZEPHYR RTX 3060 Ti G6X 8G 风神 MX"
+    },
+    {
+      "prefix": "Z3709V",
+      "model": "ZEPHYR RTX 3070 Ti  8G 风神 MX"
+    },
+    {
+      "prefix": "Z4609V",
+      "model": "ZEPHYR RTX 4060 8G 风神 Mini"
+    },
+    {
+      "prefix": "Z4724V",
+      "model": "ZEPHYR RTX 4070 12G D6 风神 MX"
+    },
+    {
+      "prefix": "ZV7601",
+      "model": "ZEPHYR RX 7600 XT 16G 风神 MT"
+    },
+    {
+      "prefix": "Z4726V",
+      "model": "ZEPHYR & SAMA RTX 4070 Super 12G"
+    },
+    {
+      "prefix": "Z5601G",
+      "model": "ZEPHYR RTX 5060 Ti 16G 深渊"
+    },
+    {
+      "prefix": "Z5602X",
+      "model": "ZEPHYR RTX 5060 Ti 16G 樱吹雪 X"
+    },
+    {
+      "prefix": "Z5702A",
+      "model": "ZEPHYR RTX 5070 12G OC 浪花"
+    },
+    {
+      "prefix": "Z3622S",
+      "model": "ZEPHYR RTX 3060 Ti 8G 樱吹雪"
+    },
+    {
+      "prefix": "Z3810A",
+      "model": "ZEPHYR RTX 3080 LHR 10G OC 浪花"
+    },
+    {
+      "prefix": "Z4727A",
+      "model": "ZEPHYR RTX 4070 Ti Super 16G OC 浪花"
+    },
+    {
+      "prefix": "Z5703P",
+      "model": "ZEPHYR RTX 5070 Ti 16G 深渊 Pro Max"
+    },
+    {
+      "prefix": "Z5704P",
+      "model": "ZEPHYR RTX 5070 Ti 16G 深渊"
+    },
+    {
+      "prefix": "Z5803G",
+      "model": "ZEPHYR RTX 5080 16G 深渊 pro Max"
+    },
+    {
+      "prefix": "Z5605V",
+      "model": "ZEPHYR RTX 5060Ti 16G 次元联动·先马限定版"
+    },
+    {
+      "prefix": "ZV6701",
+      "model": "ZEPHYR RX 6750 GRE 10G"
+    },
+    {
+      "prefix": "ZV7605",
+      "model": "ZEPHYR RX 7600 8G 风神 MT"
+    }
+  ],
+  "exceptions": [
+    {
+      "sn": "LH3602231120000019",
+      "model": "浪花RTX3060 12G",
+      "dateText": "2024年第42周"
+    }
+  ]
+}
