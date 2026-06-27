@@ -629,6 +629,10 @@ window.PRODUCTS_DATA = {
     {
       "prefix": "ZV7605",
       "model": "ZEPHYR RX 7600 8G 风神 MT"
+    },
+    {
+      "prefix": "Z5901T",
+      "model": "ZEPHYR RTX 5090 16G 测试款"
     }
   ],
   "exceptions": [
