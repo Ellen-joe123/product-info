@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans" style="height: 100%;">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1,user-scalable=0,viewport-fit=cover">
+    <meta name="wechat-enable-text-zoom-em" content="true">
+    <title>SN码查询</title>
+    <link rel="stylesheet" href="./weui.css" />
+
+    <style>
+        #code {
+            font-family: Arial, 宋体;
+            font-style: italic;
+            color: green;
+            border: 0;
+            padding: 2px 3px;
+            letter-spacing: 3px;
+            font-weight: bolder;
+            font-size: 19px;
+        }
+    </style>
+</head>
+
+<body ontouchstart onload='createCode()' style="height: 100%;">
+    <div class="page" style="height: 100%;">
+        <div class="weui-form">
+            <div class="weui-form__bd">
+                <div class="weui-form__text-area">
+                    <h2 class="weui-form__title">SN码查询</h2>
+                    <div class="weui-form__desc weui-btn_cell-warn">输入您所购买产品的序列号（SN码）</div>
+                </div>
+                <div class="weui-form__control-area">
+                    <div class="weui-cells__group weui-cells__group_form">
+                        <div class="weui-cells">
+                            <label for="js_input1" class="weui-cell weui-cell_active" id="js_cell">
+              <div class="weui-cell__hd"><span class="weui-label">序列号：</span></div>
+              <div class="weui-cell__bd weui-flex">
+                  <input id="sn" class="weui-input" type="text" placeholder="请输入序列号(SN)" maxlength="18" />
+                  <button id="js_input_clear" type="button" class="weui-btn_reset weui-btn_icon" onclick="$('#sn').val('')">
+                    <i class="weui-icon-clear"></i>
+                  </button>
+              </div>
+            </label>
+                            <label for="js_input2" class="weui-cell weui-cell_active">
+              <div class="weui-cell__hd"><span class="weui-label">验证码：</span></div>
+              <div class="weui-cell__bd weui-flex">
+                  <input id="js_input2" class="weui-input" type="text" placeholder="输入验证码" />
+              </div>
+              <button id="js_input_clear2" type="button" class="weui-btn_reset weui-btn_icon" onclick="$('#js_input2').val('')">
+                    <i class="weui-icon-clear"></i>
+                  </button>
+              <div class="weui-cell__ft">
+                <input type="button" id="code" onclick="createCode()" style="width:75px" title='点击更换验证码' /> 
+              </div>
+        </div>
+            </label>
+                        </div>
+                    </div>
+                </div>
+                <div class="weui-form__ft">
+                    <div class="weui-form__tips-area">
+                        <p class="weui-form__tips">
+                            如您没有查询到，请您仔细核对SN码是否录入正确，同时也可以咨询在线客服
+                        </p>
+                    </div>
+                    <div class="weui-form__opr-area">
+                        <a role="button" aria-disabled="false" class="weui-btn weui-btn_primary" href="javascript:" id="showTooltips">查询</a>
+                    </div>
+                </div>
+            </div>
+            <div role="alert" id="js_toast" style="display: none;">
+                <div class="weui-mask_transparent"></div>
+                <div class="weui-toast">
+                    <i class="weui-icon-success-no-circle weui-icon_toast"></i>
+                    <p class="weui-toast__content">已完成</p>
+                </div>
+            </div>
+
+            <div class="js_dialog" role="dialog" aria-hidden="true" aria-modal="true" aria-labelledby="js_title2" id="iosDialog2" style="display: none;">
+                <div class="weui-mask"></div>
+                <div class="weui-dialog">
+                    <div id="reminder_text" class="weui-dialog__bd">弹窗内容，告知当前状态、信息和解决方法，描述文字尽量控制在三行内</div>
+                    <div class="weui-dialog__ft">
+                        <a role="button" href="javascript:" class="weui-dialog__btn weui-dialog__btn_primary">知道了</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="./zepto.min.js"></script>
+    <script type="text/javascript">
+        var code; //在全局定义验证码
+
+        function createCode() {
+            code = "";
+            var codeLength = 4; //验证码的长度  
+            var checkCode = document.getElementById("code");
+            var random = new Array(0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R',
+                'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z'); //随机数  
+            for (var i = 0; i < codeLength; i++) { //循环操作  
+                var index = Math.floor(Math.random() * 36); //取得随机数的索引（0~35）  
+                code += random[index]; //根据索引取得随机数加到code上  
+            }
+            checkCode.value = code; //把code值赋给验证码  
+        }
+
+        $('.weui-dialog__btn').on('click', function() {
+            $(this).parents('.js_dialog').fadeOut(200);
+            $(this).parents('.js_dialog').attr('aria-hidden', 'true');
+            $(this).parents('.js_dialog').removeAttr('tabindex');
+        })
+
+        const EXPECTED_SERIAL_LENGTH = 18; // 假设序列号的期望长度为18
+
+        var cardMapping = {
+            "ZF3502": "ZEPHYR RTX 3050 8G OC 樱吹雪",
+            "ZF3503": "ZEPHYR RTX 3050 8G OC 樱吹雪",
+            "ZF3504": "ZEPHYR RTX 3050 8G OC 樱吹雪",
+            "ZF3505": "ZEPHYR RTX 3050 8G OC 樱吹雪",
+            "ZF3601": "ZEPHYR RTX 3060 12G OC 樱吹雪",
+            "ZF3602": "ZEPHYR RTX 3060 12G OC 樱吹雪",
+            "ZF3603": "ZEPHYR RTX 3060 12G OC 樱吹雪",
+            "ZF3604": "ZEPHYR RTX 3060 12G OC 樱吹雪",
+            "ZF3605": "ZEPHYR RTX 3060 12G OC 樱吹雪",
+            "ZF3606": "ZEPHYR RTX 3060 12G OC 樱吹雪",
+            "ZF3607": "ZEPHYR RTX 3060 TI 8G OC 樱吹雪",
+            "ZF3608": "ZEPHYR RTX 3060 TI 8G OC 樱吹雪",
+            "ZF3609": "ZEPHYR RTX 3060 TI 8G OC 樱吹雪",
+            "ZF3610": "ZEPHYR RTX 3060 TI G6X 8G 浪花",
+            "ZF3611": "ZEPHYR RTX 3060 TI G6X 8G 浪花",
+            "ZF3701": "ZEPHYR RTX 3070 TI 8G 浪花",
+            "ZF3801": "ZEPHYR RTX 3080 10G 浪花",
+            "ZF3802": "ZEPHYR RTX 3080 10G 浪花",
+            "ZF3803": "ZEPHYR RTX 3080 LHR 10G 浪花",
+            "ZF3804": "ZEPHYR RTX 3080 12G 浪花",
+            "ZF3805": "ZEPHYR RTX 3080 Ti  浪花",
+            "ZF0022": "ZEPHYR RTX 3060 TI G6X 8G 浪花",
+            "ZF0008": "ZEPHYR RTX 3070 TI 8G 浪花",
+        }
+
+        function clearText() {
+            $('#sn').val('')
+        }
+
+        $("#showTooltips").on('click', function() {
+            var sn = $('#sn').val().trim();
+            var inputCode = $('#js_input2').val().trim();
+            var $iosDialog2 = $('#iosDialog2')
+
+            if (sn.length <= 0) {
+                $('#reminder_text').text('请输入序列号！')
+                $iosDialog2.fadeIn(200);
+                $iosDialog2.attr('aria-hidden', 'false');
+                $iosDialog2.attr('tabindex', '0');
+                $iosDialog2.trigger('focus');
+            } else if (inputCode.length <= 0) { //若输入的验证码长度为0  
+                $('#reminder_text').text('请输入验证码！')
+                $iosDialog2.fadeIn(200);
+                $iosDialog2.attr('aria-hidden', 'false');
+                $iosDialog2.attr('tabindex', '0');
+                $iosDialog2.trigger('focus');
+            } else if (inputCode.toLowerCase() != code.toLowerCase()) { //若输入的验证码与产生的验证码不一致时  
+                $('#reminder_text').text('验证码输入错误！@_@')
+                $iosDialog2.fadeIn(200);
+                $iosDialog2.attr('aria-hidden', 'false');
+                $iosDialog2.attr('tabindex', '0');
+                $iosDialog2.trigger('focus');
+                createCode(); //刷新验证码  
+            } else { //输入正确时  
+                var serialNumber = sn
+                if (serialNumber.length !== EXPECTED_SERIAL_LENGTH) {
+                    $('#reminder_text').text('请输入正确的序列号！')
+                } else {
+                    const prefix = serialNumber.substring(0, 6);
+
+                    if (!cardMapping[prefix]) {
+                        $('#reminder_text').text('请输入正确的序列号！')
+                    } else {
+                        var year = serialNumber.substring(6, 8);
+                        var month = serialNumber.substring(8, 10);
+                        var day = serialNumber.substring(10, 12);
+
+                        // Parse the date from the serial number
+                        var parsedDate = new Date("20" + year, month - 1, day); // months are 0-indexed in JavaScript
+
+                        // Check if the parsed date is valid
+                        if (isNaN(parsedDate.getTime())) {
+                            $('#reminder_text').text('请输入正确的序列号！');
+                            $('#js_input2').val(''); //清空文本框  
+                            createCode(); //刷新验证码  
+                            $iosDialog2.fadeIn(200);
+                            $iosDialog2.attr('aria-hidden', 'false');
+                            $iosDialog2.attr('tabindex', '0');
+                            $iosDialog2.trigger('focus');
+                            return;
+                        }
+
+                        // Get current date
+                        var currentDate = new Date();
+                        currentDate.setHours(0, 0, 0, 0); // set time to midnight for comparison
+
+                        // Compare the parsed date with the current date
+                        if (parsedDate > currentDate) {
+                            $('#reminder_text').text('请输入正确的序列号！');
+                            $('#js_input2').val(''); //清空文本框  
+                            createCode(); //刷新验证码  
+                            $iosDialog2.fadeIn(200);
+                            $iosDialog2.attr('aria-hidden', 'false');
+                            $iosDialog2.attr('tabindex', '0');
+                            $iosDialog2.trigger('focus');
+                            return;
+                        }
+
+
+                        // 修改输出格式，将日期和显卡型号放入不同的元素中
+                        $('#reminder_text').html(`
+            <p id="pmodel">产品型号：${cardMapping[prefix]}</p><p id="pouttime">出厂日期：20${year}-${month}-${day}</p>
+                `);
+
+                    }
+                }
+                $('#js_input2').val(''); //清空文本框  
+                createCode(); //刷新验证码  
+                $iosDialog2.fadeIn(200);
+                $iosDialog2.attr('aria-hidden', 'false');
+                $iosDialog2.attr('tabindex', '0');
+                $iosDialog2.trigger('focus');
+            }
+        });
+    </script>
+</body>
+
+</html>
