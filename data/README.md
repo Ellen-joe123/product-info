@@ -17,10 +17,8 @@
 
 1. 编辑 `products.json`
 2. 在 `newRules`（新款）或 `oldRules`（旧款）或 `exceptions`（特例）中追加一条
-3. Commit 到 `main` 分支（CI 会检查 `products.js` 是否与 `products.json` 同步）
-4. 约 1～2 分钟后在 https://sn.zephyrsz.com 验证
-
-本地修改 `products.json` 后，需运行 `node tools/sync-products.js` 生成 `products.js`。
+3. Commit 到 `main` 分支（CI 会自动校验 JSON 并生成 `products.js`，无需手动处理）
+4. 约 2～3 分钟后在 https://sn.zephyrsz.com 验证
 
 ### 新增一条（模板）
 
