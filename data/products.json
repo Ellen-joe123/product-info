@@ -630,6 +630,10 @@
     {
       "prefix": "Z5901T",
       "model": "ZEPHYR RTX 5090 16G 测试款"
+    },
+    {
+      "prefix": "Z5902V",
+      "model": "ZEPHYR RTX 5090 16G 风神 Mini"
     }
   ],
   "exceptions": [
