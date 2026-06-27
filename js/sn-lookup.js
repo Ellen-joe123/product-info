@@ -5,7 +5,7 @@
 
   var CHARS = '0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ'.split('');
 
-  function createCode() {
+  function createCode () {
     code = '';
     var checkCode = document.getElementById('code');
     for (var i = 0; i < 4; i++) {
@@ -14,7 +14,7 @@
     checkCode.value = code;
   }
 
-  function showDialog(message, isHtml) {
+  function showDialog (message, isHtml) {
     var $dialog = $('#iosDialog2');
     if (isHtml) {
       $('#reminder_text').html(message);
@@ -27,16 +27,16 @@
     $dialog.trigger('focus');
   }
 
-  function resetCaptcha() {
+  function resetCaptcha () {
     $('#js_input2').val('');
     createCode();
   }
 
-  function checkDate(date) {
+  function checkDate (date) {
     return new Date(date).getDate() == date.substring(date.length - 2);
   }
 
-  function findRule(sn, rules) {
+  function findRule (sn, rules) {
     for (var i = 0; i < rules.length; i++) {
       if (sn.startsWith(rules[i].prefix)) {
         return rules[i];
@@ -45,7 +45,7 @@
     return null;
   }
 
-  function findException(sn, exceptions) {
+  function findException (sn, exceptions) {
     for (var i = 0; i < exceptions.length; i++) {
       if (sn === exceptions[i].sn) {
         return exceptions[i];
@@ -54,7 +54,7 @@
     return null;
   }
 
-  function parseOldRule(sn, rule) {
+  function parseOldRule (sn, rule) {
     var remainingPart = sn.substring(rule.prefix.length);
     var regExpDate = /^[0-9]{6}$/;
     var year = remainingPart.substring(0, 2);
@@ -92,7 +92,7 @@
     return { error: '请输入正确的序列号格式！' };
   }
 
-  function parseNewRule(sn, rule) {
+  function parseNewRule (sn, rule) {
     var remainingPart = sn.substring(rule.prefix.length);
 
     if (remainingPart.length < 8) {
@@ -114,7 +114,7 @@
     };
   }
 
-  function formatResult(model, dateText) {
+  function formatResult (model, dateText) {
     return (
       '<p id="pmodel">产品型号：' +
       model +
@@ -125,7 +125,7 @@
     );
   }
 
-  function lookupSerialNumber(sn) {
+  function lookupSerialNumber (sn) {
     if (!products) {
       return { error: loadError || '产品数据加载中，请稍后再试' };
     }
@@ -158,50 +158,19 @@
     return { error: '请输入正确的序列号！' };
   }
 
-  function getProductsDataUrl() {
-    var scripts = document.getElementsByTagName('script');
-    for (var i = scripts.length - 1; i >= 0; i--) {
-      var src = scripts[i].src;
-      if (src && src.indexOf('sn-lookup.js') !== -1) {
-        return src.replace(/js\/sn-lookup\.js(\?.*)?$/, 'data/products.json');
-      }
-    }
-    return new URL('data/products.json', window.location.href).href;
-  }
-
-  function getLocalDevHint() {
-  return (
-      '本地不能直接双击打开 HTML 文件。\n' +
-      '请在项目目录启动本地服务器，然后访问 http://localhost:8080\n' +
-      '（可双击 serve.bat，或运行：python -m http.server 8080）'
-    );
-  }
-
-  function loadProducts() {
-    if (window.location.protocol === 'file:') {
-      products = null;
-      loadError = getLocalDevHint();
+  function loadProducts () {
+    if (window.PRODUCTS_DATA) {
+      products = window.PRODUCTS_DATA;
+      loadError = null;
       return Promise.resolve();
     }
 
-    return fetch(getProductsDataUrl())
-      .then(function (response) {
-        if (!response.ok) {
-          throw new Error('无法加载产品数据');
-        }
-        return response.json();
-      })
-      .then(function (data) {
-        products = data;
-        loadError = null;
-      })
-      .catch(function (error) {
-        products = null;
-        loadError = error.message || '无法加载产品数据';
-      });
+    products = null;
+    loadError = '无法加载产品数据';
+    return Promise.resolve();
   }
 
-  function init() {
+  function init () {
     createCode();
 
     $('.weui-dialog__btn').on('click', function () {

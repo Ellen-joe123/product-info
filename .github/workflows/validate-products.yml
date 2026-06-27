@@ -4,11 +4,17 @@ on:
   push:
     paths:
       - 'data/products.json'
+      - 'data/products.js'
       - 'tools/validate-products.js'
+      - 'tools/check-products-sync.js'
+      - 'tools/sync-products.js'
   pull_request:
     paths:
       - 'data/products.json'
+      - 'data/products.js'
       - 'tools/validate-products.js'
+      - 'tools/check-products-sync.js'
+      - 'tools/sync-products.js'
 
 jobs:
   validate:
@@ -19,3 +25,4 @@ jobs:
         with:
           node-version: '20'
       - run: node tools/validate-products.js
+      - run: node tools/check-products-sync.js
