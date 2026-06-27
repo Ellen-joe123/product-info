@@ -158,16 +158,40 @@
     return { error: '请输入正确的序列号！' };
   }
 
+  function getProductsDataUrl () {
+    return new URL('data/products.json', window.location.href).href;
+  }
+
+  function getLocalDevHint () {
+    return (
+      '本地不能直接双击打开 HTML 文件。\n' +
+      '请在项目目录启动本地服务器，然后访问 http://localhost:8080\n' +
+      '（可双击 serve.bat，或运行：python -m http.server 8080）'
+    );
+  }
+
   function loadProducts () {
-    if (window.PRODUCTS_DATA) {
-      products = window.PRODUCTS_DATA;
-      loadError = null;
+    if (window.location.protocol === 'file:') {
+      products = null;
+      loadError = getLocalDevHint();
       return Promise.resolve();
     }
 
-    products = null;
-    loadError = '无法加载产品数据';
-    return Promise.resolve();
+    return fetch(getProductsDataUrl())
+      .then(function (response) {
+        if (!response.ok) {
+          throw new Error('无法加载产品数据');
+        }
+        return response.json();
+      })
+      .then(function (data) {
+        products = data;
+        loadError = null;
+      })
+      .catch(function (error) {
+        products = null;
+        loadError = error.message || '无法加载产品数据';
+      });
   }
 
   function init () {

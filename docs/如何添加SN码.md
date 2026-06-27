@@ -4,9 +4,9 @@
 
 **你只需要修改一个文件：** `data/products.json`
 
-**网站地址：** https://sn.zephyrsz.com（GitHub Pages 自动发布，提交后约 2～3 分钟生效）
+**网站地址：** https://sn.zephyrsz.com（GitHub Pages 自动发布，提交后约 1～2 分钟生效）
 
-> 提交 `products.json` 后，GitHub Actions 会自动生成 `products.js`，**你不需要改或运行任何脚本**。
+> 网站直接读取 `products.json`，提交后无需其他操作。
 
 ---
 
@@ -111,7 +111,7 @@
 1. 滚到页面底部 **Commit changes**
 2. 填写说明，例如：`新增 Z5801G 料号`
 3. 点击 **Commit changes**
-4. 等待约 2～3 分钟（CI 会自动生成 `products.js` 并发布网站），打开 https://sn.zephyrsz.com 测试
+4. 等待 1～2 分钟，打开 https://sn.zephyrsz.com 测试
 
 ---
 
